@@ -40,7 +40,7 @@ pub fn create(
 
     diesel::insert_into(feed_items::table)
         .values(new_feed_items)
-        .on_conflict((feed_items::feed_id, feed_items::title, feed_items::link))
+        .on_conflict((feed_items::feed_id, feed_items::title))
         .do_nothing()
         .get_results(conn)
 }
